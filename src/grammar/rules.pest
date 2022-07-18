@@ -133,4 +133,4 @@ equal = _{ "=" }
 quote_dubble = _{ "\"" }
 quote_single = _{ "'" }
 quote = _{ quote_dubble | quote_single }
-WHITESPACE = _{ " " | "\t" | "\r" | "\n" }
+WHITESPACE = _{ "\r" | "\n" }

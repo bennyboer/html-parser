@@ -111,6 +111,19 @@ fn it_can_parse_deeply_nested() -> Result<()> {
     Ok(())
 }
 #[test]
+fn it_can_parse_weird_formatting() -> Result<()> {
+    let html = indoc!(
+        r#"
+            <p>
+                This is a paragraph with weirdly <i>for</i>matt<strong>ed</strong> text.
+            </p>
+        "#
+    );
+    let dom = Dom::parse(html)?;
+    assert_json_snapshot!(dom);
+    Ok(())
+}
+#[test]
 fn it_can_parse_script_with_content() -> Result<()> {
     let html = indoc!(
         r#"

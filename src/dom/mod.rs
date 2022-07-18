@@ -110,6 +110,7 @@ impl Dom {
                 // have a document type yet (i.e. "empty"), select DocumentFragment
                 Rule::node_element => match Self::build_node_element(pair.into_inner(), &mut dom) {
                     Ok(el) => {
+                        println!("# B # {:?}", el);
                         if let Some(node) = el {
                             if dom.tree_type == DomVariant::Empty {
                                 dom.tree_type = DomVariant::DocumentFragment;
@@ -232,6 +233,8 @@ impl Dom {
         for pair in pairs {
             match pair.as_rule() {
                 Rule::node_element | Rule::el_raw_text => {
+                    println!("BBBBBBBBBB '{}', {:?}, {:?}", pair.as_str(), pair.as_span().start_pos().line_col(), pair.as_span().end_pos().line_col());
+
                     match Self::build_node_element(pair.into_inner(), dom) {
                         Ok(el) => {
                             if let Some(child_element) = el {
@@ -244,6 +247,7 @@ impl Dom {
                     }
                 }
                 Rule::node_text | Rule::el_raw_text_content => {
+                    println!("AAAAAAAAAAAA '{}', {:?}, {:?}", pair.as_str(), pair.as_span().start_pos().line_col(), pair.as_span().end_pos().line_col());
                     element.children.push(Node::Text(pair.as_str().to_string()));
                 }
                 Rule::node_comment => {

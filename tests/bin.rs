@@ -23,6 +23,7 @@ fn it_prints_out_processing_error() -> Result<()> {
         .unwrap();
 
     let stdout = String::from_utf8(output.stdout).unwrap();
+    println!("{}", stdout);
 
     assert!(stdout.starts_with("# Failed to create element at rule: el_process_instruct"));
     Ok(())

@@ -1,0 +1,32 @@
+---
+source: tests/element.rs
+expression: dom
+---
+{
+  "treeType": "documentFragment",
+  "children": [
+    {
+      "name": "p",
+      "variant": "normal",
+      "children": [
+        "    This is a paragraph with weirdly ",
+        {
+          "name": "i",
+          "variant": "normal",
+          "children": [
+            "for"
+          ]
+        },
+        "matt",
+        {
+          "name": "strong",
+          "variant": "normal",
+          "children": [
+            "ed"
+          ]
+        },
+        " text."
+      ]
+    }
+  ]
+}
